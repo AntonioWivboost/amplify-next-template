@@ -5,18 +5,16 @@ applications:
       phases:
         preBuild:
           commands:
-            - echo "Iniciando fase preBuild en directorio $(pwd)"
-            - npm ci
+            - "echo Iniciando fase preBuild"
+            - "npm ci"
         build:
           commands:
-            - echo "Iniciando fase build en directorio $(pwd)"
-            - echo "Versión de Node.js: $(node -v)"
-            - echo "Versión de npm: $(npm -v)"
-            - npm run build
+            - "echo Iniciando fase build"
+            - "npm run build"
       artifacts:
         baseDirectory: .next
         files:
-          - '**/*'
+          - "**/*"
       cache:
         paths:
           - .next/cache/**/*
@@ -26,6 +24,6 @@ applications:
       phases:
         build:
           commands:
-            - echo "Iniciando backend build en directorio $(pwd)"
-            - npm ci --cache .npm --prefer-offline
-            - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+            - "echo Iniciando backend build"
+            - "npm ci --cache .npm --prefer-offline"
+            - "npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID"
